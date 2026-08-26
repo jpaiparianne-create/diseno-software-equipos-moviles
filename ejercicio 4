@@ -1,0 +1,29 @@
+import 'dart:io'; // Importa la librería para leer desde la consola
+
+void main() {
+  // Pide una serie de números escritos en la misma línea y separados por un espacio
+  print("Ingresa los numeros separados por espacios:");
+  // Lee el texto completo introducido por el usuario
+  String entrada = stdin.readLineSync()!;
+
+  // Divide el texto usando el espacio (" ") como separador para crear una lista de cadenas
+  List<String> lista = entrada.split(" ");
+
+  // Declara e inicializa la variable acumuladora de la suma en 0
+  int suma = 0;
+
+  // Bucle 'for-in': recorre cada elemento en la lista de texto
+  for (String numeroTexto in lista) {
+    // Convierte el elemento actual (texto) a número entero
+    int numero = int.parse(numeroTexto);
+
+    // Evalúa si el número es par usando el operador residuo/módulo (%)
+    if (numero % 2 == 0) {
+      // Si el residuo de dividir por 2 es 0, suma el número al total acumulado
+      suma = suma + numero;
+    }
+  }
+
+  // Imprime el valor final acumulado de los números pares
+  print("La suma de los numeros pares es: $suma");
+}
