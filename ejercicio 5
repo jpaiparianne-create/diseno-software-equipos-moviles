@@ -1,0 +1,23 @@
+import 'dart:io'; // Importa la librería para captura de entradas del usuario
+
+void main() {
+  // Solicita una lista de palabras separadas por comas
+  print("Ingresa las palabras separadas por comas:");
+  // Lee la cadena introducida por consola
+  String entrada = stdin.readLineSync()!;
+
+  // Divide el texto ingresado tomando las comas (",") como delimitador
+  List<String> palabras = entrada.split(",");
+
+  // Declara un conjunto (Set) vacío. Los Set descartan automáticamente los elementos repetidos
+  Set<String> unicas = {};
+
+  // Recorre elemento por elemento la lista de palabras generada
+  for (String palabra in palabras) {
+    // Agrega la palabra al Set (si ya existe, el Set la ignora automáticamente)
+    unicas.add(palabra);
+  }
+
+  // Muestra por pantalla la colección final de elementos únicos
+  print("Palabras únicas: $unicas");
+}
