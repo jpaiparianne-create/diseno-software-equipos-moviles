@@ -1,0 +1,30 @@
+import 'dart:io'; // Importa el módulo de lectura de consola
+
+void main() {
+  // Pide al usuario que ingrese 10 palabras separadas por espacios
+  print("Escribe 10 palabras separadas por espacios:");
+
+  // Lee la linea ingresada (String? indica que puede retornar nulo si no hay entrada)
+  String? entrada = stdin.readLineSync();
+
+  // El operador '!' asegura que 'entrada' no es nula y la divide por espacios en una lista
+  List<String> palabras = entrada!.split(" ");
+
+  // Crea un mapa vacío clave-valor (Clave: la palabra [String], Valor: su conteo [int])
+  Map<String, int> frecuencia = {};
+
+  // Recorre cada palabra de la lista
+  for (String palabra in palabras) {
+    // Verifica si la palabra aún no ha sido registrada en el mapa (su valor es nulo)
+    if (frecuencia[palabra] == null) {
+      // Si es la primera vez que aparece, la registra en el mapa con conteo inicial 1
+      frecuencia[palabra] = 1;
+    } else {
+      // Si ya existía, suma 1 a la cantidad de veces que ha aparecido previamente
+      frecuencia[palabra] = frecuencia[palabra]! + 1;
+    }
+  }
+
+  // Imprime el diccionario final mostrando cada palabra con su número total de ocurrencias
+  print(frecuencia);
+}
