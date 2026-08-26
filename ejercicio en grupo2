@@ -1,0 +1,69 @@
+import 'dart:io';
+
+void main() {
+  // Pedir el presupuesto máximo usando stdout.write para no agregar un salto de línea
+  stdout.write('Ingrese el presupuesto máximo en pesos: \$');
+  // Lee la entrada y la convierte a número decimal (double)
+  double presupuesto = double.parse(stdin.readLineSync()!);
+
+  // Imprime una línea separadora para ordenar la interfaz en consola
+  print('\n------------------------------------------------------------');
+
+  // Inicializa una lista vacía para almacenar los precios válidos ingresados
+  List<double> preciosIngresados = [];
+
+  // Solicitar los precios en bucle hasta que el usuario digite -1
+  print('\nIngrese los precios de los productos uno a uno (ingrese -1 para terminar):\n');
+
+  // Bucle infinito que se detendrá únicamente con la instrucción 'break'
+  while (true) {
+    stdout.write('Precio del producto: \$');
+    String? entrada = stdin.readLineSync(); // Lee el texto ingresado
+
+    if (entrada != null) {
+      // Intenta convertir la entrada a double. Si no es un número válido, asigna -1 por defecto
+      double precio = double.tryParse(entrada) ?? -1;
+
+      // Si el número ingresado es -1, rompe el bucle while y deja de pedir precios
+      if (precio == -1) {
+        break; // Terminar la lectura
+      }
+
+      // Si el precio es un valor positivo, lo agrega a la lista de precios ingresados
+      if (precio > 0) {
+        preciosIngresados.add(precio);
+      } else {
+        // Muestra un mensaje si el número ingresado es 0 o un valor negativo distinto de -1
+        print('Por favor, ingrese un precio válido.');
+      }
+    }
+  }
+
+  // Variables para gestionar la evaluación del presupuesto
+  List<double> carritoDefinitivo = []; // Almacena solo los productos que se pueden comprar
+  double gastoTotal = 0.0;              // Acumulador del dinero gastado hasta el momento
+
+  print('\n------------------------------------------------------------');
+  print('\n--- EVALUANDO COMPRAS ---');
+
+  // Recorre uno a uno todos los precios que el usuario ingresó previamente
+  for (double precio in preciosIngresados) {
+    // Evalúa si al sumar el producto actual no nos pasamos del presupuesto inicial
+    if (gastoTotal + precio <= presupuesto) {
+      carritoDefinitivo.add(precio); // Agrega el precio al carrito final
+      gastoTotal += precio;          // Suma el precio al costo acumulado (gastoTotal = gastoTotal + precio)
+    } else {
+      // Si el precio supera el dinero restante, alerta al usuario indicando el saldo disponible
+      print('El precio \$${precio.toStringAsFixed(2)} supera el presupuesto inicial disponible (\$${(presupuesto - gastoTotal).toStringAsFixed(2)} restante). Se omitirá.');
+    }
+  }
+
+  // Muestra por pantalla el desglose completo del proceso
+  print('\n------------------------------------------------------------');
+  print('\n--- RESUMEN DE COMPRA ---');
+  print('Presupuesto inicial: \$${presupuesto.toStringAsFixed(2)}'); // Muestra con 2 decimales
+  print('Precios ingresados: $preciosIngresados');                   // Muestra la lista original de precios
+  print('Carrito definitivo: $carritoDefinitivo');                   // Muestra la lista con los precios aprobados
+  print('Gasto total: \$${gastoTotal.toStringAsFixed(2)}');          // Muestra el acumulado gastado
+  print('Sobrante del presupuesto: \$${(presupuesto - gastoTotal).toStringAsFixed(2)}'); // Muestra lo que quedó
+}
