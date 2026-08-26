@@ -1,0 +1,32 @@
+import 'dart:io'; // Importa la librería necesaria para leer y escribir en la consola
+
+void main() {
+  // Pide al usuario el valor total de la cuenta
+  print("Ingresa el total de la cuenta:");
+  // Lee la entrada de texto del teclado y la convierte a un número decimal (double)
+  double cuenta = double.parse(stdin.readLineSync()!);
+
+  // Pide al usuario el porcentaje de propina a aplicar
+  print("Ingresa el porcentaje de propina:");
+  // Lee la entrada y la convierte a tipo decimal
+  double propina = double.parse(stdin.readLineSync()!);
+
+  // Calcula el monto exacto de la propina aplicando la fórmula (cuenta * porcentaje / 100)
+  double valorPropina = cuenta * propina / 100;
+
+  // Suma el total inicial de la cuenta más el valor calculado de la propina
+  double total = cuenta + valorPropina;
+
+  // Solicita la cantidad de personas entre las que se dividirá el pago
+  print("¿Entre cuántas personas se divide?");
+  // Lee la entrada y la convierte a un número entero (int)
+  int personas = int.parse(stdin.readLineSync()!);
+
+  // Divide el total acumulado entre el número de personas
+  double porPersona = total / personas;
+
+  // Imprime en pantalla el total a pagar incluyendo propina
+  print("Total con propina: $total");
+  // Imprime en pantalla la cuota individual que le corresponde a cada persona
+  print("Cada persona paga: $porPersona");
+}
