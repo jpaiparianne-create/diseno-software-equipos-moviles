@@ -1,0 +1,16 @@
+void main() {
+  // 1. Declaración de la variable 'entrada' con el año de nacimiento en formato de texto (String)
+  String entrada = "2002";
+
+  // 2. Convierte el texto "2002" a un número entero (int) para poder hacer operaciones matemáticas
+  int anioNacimiento = int.parse(entrada);
+
+  // 3. Define el año actual como un número entero
+  int anioActual = 2026;
+
+  // 4. Calcula la edad restando el año de nacimiento al año actual
+  int edad = anioActual - anioNacimiento;
+
+  // 5. Muestra el resultado final en la consola usando interpolación de variables ($edad)
+  print('Su edad es de $edad años .');
+}
