@@ -1,0 +1,46 @@
+import 'dart:io'; // Importa la librería de entrada y salida estándar
+
+void main() {
+  // Pide al usuario que ingrese un número del 1 al 12
+  print("Ingresa un número del 1 al 12:");
+  // Convierte la entrada del usuario a número entero
+  int mes = int.parse(stdin.readLineSync()!);
+
+  // Estructura condicional múltiple para evaluar qué mes corresponde a cada número
+  if (mes == 1) {
+    print("Enero");
+  }
+  if (mes == 2) {
+    print("Febrero");
+  }
+  if (mes == 3) {
+    print("Marzo");
+  }
+  if (mes == 4) {
+    print("Abril");
+  }
+  if (mes == 5) {
+    print("Mayo");
+  }
+  if (mes == 6) {
+    print("Junio");
+  }
+  if (mes == 7) {
+    print("Julio");
+  }
+  if (mes == 8) {
+    print("Agosto");
+  }
+  if (mes == 9) {
+    print("Septiembre");
+  }
+  if (mes == 10) {
+    print("Octubre");
+  }
+  if (mes == 11) {
+    print("Noviembre");
+  }
+  if (mes == 12) {
+    print("Diciembre");
+  }
+}
