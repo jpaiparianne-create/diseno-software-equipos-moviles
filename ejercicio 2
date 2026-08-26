@@ -1,0 +1,23 @@
+import 'dart:io'; // Importa la biblioteca de entrada/salida de datos
+
+void main() {
+  // Solicita un número al usuario
+  print("Ingresa un número:");
+  // Lee la cadena introducida por el usuario y la convierte a número decimal
+  double numero = double.parse(stdin.readLineSync()!);
+
+  // Condición 1: Comprueba si el número es estrictamente mayor que 0
+  if (numero > 0) {
+    print("El número es positivo");
+  }
+
+  // Condición 2: Comprueba si el número es estrictamente menor que 0
+  if (numero < 0) {
+    print("El numero es negativo");
+  }
+
+  // Condición 3: Comprueba si el número es exactamente igual a 0
+  if (numero == 0) {
+    print("El numero es cero");
+  }
+}
